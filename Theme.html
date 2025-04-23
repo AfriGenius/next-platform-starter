@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog professionnel avec outils IA et articles sur la finance digitale">
+    <meta name="keywords" content="finance, IA, outils, calculateur, générateur, blog">
+    <meta name="author" content="Finance Digitale">
+    <title>Finance Digitale | Accueil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --bg-light: #ffffff;
+            --bg-dark: #121212;
+            --text-light: #333333;
+            --text-dark: #f8f9fa;
+            --card-bg: #ffffff;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary: #4895ef;
+            --primary-dark: #3f83d6;
+            --secondary: #4361ee;
+            --accent: #3f37c9;
+            --bg-light: #121212;
+            --bg-dark: #1e1e1e;
+            --text-light: #f8f9fa;
+            --text-dark: #333333;
+            --card-bg: #1e1e1e;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animation 3D du fond */
+        .bg-3d {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(63, 55, 201, 0.1) 100%);
+            overflow: hidden;
+        }
+
+        .particle-3d {
+            position: absolute;
+            background: rgba(72, 149, 239, 0.15);
+            border-radius: 50%;
+            animation: float3d 15s infinite linear;
+        }
+
+        @keyframes float3d {
+            0% {
+                transform: translate3d(0, 0, 0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translate3d(100vw, 100vh, 100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(var(--primary), 0.95);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 70%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: rotate(30deg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+
+        /* Contenu principal */
+        main {
+            max-width: 1200px;
+            margin: 5rem auto 2rem;
+            padding: 0 2rem;
+            min-height: calc(100vh - 7rem);
+        }
+
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Styles communs */
+        .section-title {
+            font-size: 2.2rem;
+            margin: 2rem 0 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s;
+            border: 1px solid rgba(var(--primary), 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Page d'accueil */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(72, 149, 239, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            animation: pulse 8s infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: var(--text-light);
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero .btn {
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .feature-card:hover {
+            transform: perspective(1000px) rotateY(10deg) translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: all 0.5s;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.2) rotateY(20deg);
+            color: var(--accent);
+        }
+
+        /* Page d'outils */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tool-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            transition: all 0.5s;
+            perspective: 1000px;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: all 0.5s;
+        }
+
+        .tool-card:hover .tool-icon {
+            transform: rotateY(180deg) scale(1.2);
+            color: var(--accent);
+        }
+
+        /* Calculateur d'économies */
+        .calculator {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background-color: var(--card-bg);
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+        }
+
+        .calculator::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            z-index: -1;
+            border-radius: 20px;
+            opacity: 0.3;
+            transform: translateZ(-20px);
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .input-group input, 
+        .input-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(var(--primary), 0.3);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: var(--card-bg);
+            color: var(--text-light);
+        }
+
+        .input-group input:focus, 
+        .input-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(var(--primary), 0.1);
+        }
+
+        .result-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(72, 149, 239, 0.1), rgba(67, 97, 238, 0.1));
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .result-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 0.5rem 0;
+        }
+
+        /* Générateur de contenu */
+        .generator {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            background-color: var(--card-bg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .output-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: rgba(var(--primary), 0.05);
+            border-radius: 10px;
+            display: none;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Page d'articles */
+        .articles-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .article-card {
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+        }
+
+        .article-date {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .article-excerpt {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .read-more {
+            color: var(--primary);
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .read-more:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 3rem 0;
+            gap: 0.5rem;
+        }
+
+        .page-btn {
+            padding: 0.7rem 1.2rem;
+            background-color: var(--card-bg);
+            border: 1px solid rgba(var(--primary), 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-light);
+        }
+
+        .page-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .page-btn:hover:not(.active) {
+            background-color: rgba(var(--primary), 0.1);
+        }
+
+        /* Page À propos */
+        .about-section {
+            margin: 3rem 0;
+        }
+
+        .about-card {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 12px;
+            background-color: var(--card-bg);
+            box-shadow: var(--card-shadow);
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .about-card:hover {
+            transform: rotateY(5deg) translateY(-5px);
+        }
+
+        .about-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .about-title i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .values {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 1.5rem;
+            transition: all 0.5s;
+            transform-style: preserve-3d;
+        }
+
+        .value-item:hover {
+            transform: rotateX(10deg) translateY(-10px);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: inline-block;
+            transition: all 0.5s;
+        }
+
+        .value-item:hover .value-icon {
+            transform: rotateY(180deg) scale(1.2);
+            color: var(--accent);
+        }
+
+        /* Page de contact */
+        .contact-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            background-color: var(--card-bg);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid rgba(var(--primary), 0.3);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: var(--card-bg);
+            color: var(--text-light);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(var(--primary), 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .error-message {
+            color: var(--warning);
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .success-message {
+            background-color: rgba(76, 201, 240, 0.2);
+            color: var(--success);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            display: none;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .whatsapp-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-logo i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            main {
+                margin-top: 4rem;
+                padding: 0 1.5rem;
+            }
+
+            .features, .tools-grid, .articles-list, .values {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            main {
+                padding: 0 1rem;
+            }
+
+            .calculator, .generator, .contact-form {
+                padding: 1.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fond animé 3D -->
+    <div class="bg-3d" id="bg3d"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo" data-page="home">
+                <i class="fas fa-brain"></i>
+                <span>Finance Digitale</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" data-page="home">Accueil</a></li>
+                    <li><a href="#" data-page="tools">Outils</a></li>
+                    <li><a href="#" data-page="articles">Articles</a></li>
+                    <li><a href="#" data-page="about">À propos</a></li>
+                    <li><a href="#" data-page="contact">Contact</a></li>
+                </ul>
+                
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main>
+        <!-- Page d'accueil -->
+        <div class="page active" id="home">
+            <section class="hero">
+                <h1>Transformez votre finance avec l'IA</h1>
+                <p>Découvrez des outils puissants et des articles experts pour optimiser votre gestion financière et booster votre productivité.</p>
+                <a href="#" data-page="tools" class="btn">Explorer les outils</a>
+            </section>
+
+            <section>
+                <h2 class="section-title">Nos fonctionnalités</h2>
+                <div class="features">
+                    <div class="feature-card card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Calculateurs intelligents</h3>
+                        <p>Des outils de calcul précis pour planifier vos finances et projets.</p>
+                    </div>
+                    
+                    <div class="feature-card card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>IA intégrée</h3>
+                        <p>Des fonctionnalités alimentées par l'intelligence artificielle.</p>
+                    </div>
+                    
+                    <div class="feature-card card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Analyses avancées</h3>
+                        <p>Visualisez vos données financières pour de meilleures décisions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Derniers articles</h2>
+                <div class="articles-list">
+                    <div class="article-card card">
+                        <div class="article-image">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">15 Juin 2023</div>
+                            <h3 class="article-title">Optimiser son épargne en 2023</h3>
+                            <p class="article-excerpt">Découvrez les stratégies les plus efficaces pour maximiser vos économies cette année.</p>
+                            <a href="#" class="read-more">Lire plus <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="article-card card">
+                        <div class="article-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">10 Juin 2023</div>
+                            <h3 class="article-title">L'IA dans la finance</h3>
+                            <p class="article-excerpt">Comment l'intelligence artificielle révolutionne la gestion des finances personnelles.</p>
+                            <a href="#" class="read-more">Lire plus <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="article-card card">
+                        <div class="article-image">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="article-content">
+                            <div class="article-date">5 Juin 2023</div>
+                            <h3 class="article-title">Applications financières</h3>
+                            <p class="article-excerpt">Les meilleures applications pour gérer votre budget et vos investissements.</p>
+                            <a href="#" class="read-more">Lire plus <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Page d'outils -->
+        <div class="page" id="tools">
+            <h2 class="section-title">Nos outils</h2>
+            <p>Utilisez nos outils puissants pour optimiser vos finances et votre productivité.</p>
+            
+            <div class="tools-grid">
+                <div class="tool-card card">
+                    <div class="tool-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Calculateur d'économies</h3>
+                    <p>Calculez vos économies potentielles avec différents scénarios.</p>
+                    <a href="#" data-page="savings-calculator" class="btn">Utiliser</a>
+                </div>
+                
+                <div class="tool-card card">
+                    <div class="tool-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Convertisseur de devises</h3>
+                    <p>Convertissez entre différentes devises avec des taux actualisés.</p>
+                    <a href="#" data-page="currency-converter" class="btn">Utiliser</a>
+                </div>
+                
+                <div class="tool-card card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3>Générateur de factures</h3>
+                    <p>Créez des factures professionnelles en quelques clics.</p>
+                    <a href="#" data-page="invoice-generator" class="btn">Utiliser</a>
+                </div>
+                
+                <div class="tool-card card">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3>Analyse de budget</h3>
+                    <p>Visualisez et analysez vos dépenses mensuelles.</p>
+                    <a href="#" data-page="budget-analyzer" class="btn">Utiliser</a>
+                </div>
+                
+                <div class="tool-card card">
+                    <div class="tool-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3>Générateur de contenu</h3>
+                    <p>Créez du contenu optimisé pour vos blogs et réseaux sociaux.</p>
+                    <a href="#" data-page="content-generator" class="btn">Utiliser</a>
+                </div>
+                
+                <div class="tool-card card">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Créateur de PDF</h3>
+                    <p>Générez des documents PDF professionnels à partir de votre contenu.</p>
+                    <a href="#" data-page="pdf-creator" class="btn">Utiliser</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calculateur d'économies -->
+        <div class="page" id="savings-calculator">
+            <div class="calculator">
+                <h2 class="section-title">Calculateur d'économies</h2>
+                <form id="savingsCalculator">
+                    <div class="input-group">
+                        <label for="initialAmount">Montant initial</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="number" id="initialAmount" placeholder="Entrez le montant" required>
+                            <select id="initialCurrency">
+                                <option value="FCFA">FCFA</option>
+                                <option value="EUR">EUR</option>
+                                <option value="USD">USD</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="monthlyDeposit">Dépôt mensuel</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="number" id="monthlyDeposit" placeholder="Entrez le montant" required>
+                            <select id="depositCurrency">
+                                <option value="FCFA">FCFA</option>
+                                <option value="EUR">EUR</option>
+                                <option value="USD">USD</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="interestRate">Taux d'intérêt annuel (%)</label>
+                        <input type="number" id="interestRate" step="0.01" placeholder="Ex: 3.5" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="years">Durée (années)</label>
+                        <input type="number" id="years" placeholder="Nombre d'années" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Calculer</button>
+                </form>
+                
+                <div class="result-box" id="savingsResult">
+                    <h3 class="result-title">Résultat du calcul</h3>
+                    <p>Montant total épargné:</p>
+                    <div class="result-value" id="totalAmount">0 FCFA</div>
+                    <p>Dont intérêts:</p>
+                    <div class="result-value" id="interestAmount">0 FCFA</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Convertisseur de devises -->
+        <div class="page" id="currency-converter">
+            <div class="calculator">
+                <h2 class="section-title">Convertisseur de devises</h2>
+                <form id="currencyConverter">
+                    <div class="input-group">
+                        <label for="amount">Montant</label>
+                        <input type="number" id="amount" placeholder="Entrez le montant" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="fromCurrency">De</label>
+                        <select id="fromCurrency">
+                            <option value="FCFA">FCFA</option>
+                            <option value="EUR">Euro (EUR)</option>
+                            <option value="USD">Dollar US (USD)</option>
+                            <option value="GBP">Livre Sterling (GBP)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="toCurrency">À</label>
+                        <select id="toCurrency">
+                            <option value="FCFA">FCFA</option>
+                            <option value="EUR">Euro (EUR)</option>
+                            <option value="USD" selected>Dollar US (USD)</option>
+                            <option value="GBP">Livre Sterling (GBP)</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn">Convertir</button>
+                </form>
+                
+                <div class="result-box" id="conversionResult">
+                    <h3 class="result-title">Résultat de la conversion</h3>
+                    <div class="result-value" id="convertedValue">0 FCFA</div>
+                    <p>Taux de change: 1 <span id="fromCurrencyText">FCFA</span> = <span id="exchangeRate">0.0017</span> <span id="toCurrencyText">USD</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Générateur de contenu -->
+        <div class="page" id="content-generator">
+            <div class="generator">
+                <h2 class="section-title">Générateur de contenu</h2>
+                <form id="contentGenerator">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="contentType">Type de contenu</label>
+                            <select id="contentType" required>
+                                <option value="">Sélectionnez</option>
+                                <option value="article">Article de blog</option>
+                                <option value="post">Post réseaux sociaux</option>
+                                <option value="email">Email marketing</option>
+                                <option value="product">Description de produit</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="contentTone">Ton</label>
+                            <select id="contentTone" required>
+                                <option value="professional">Professionnel</option>
+                                <option value="friendly">Amical</option>
+                                <option value="persuasive">Persuasif</option>
+                                <option value="technical">Technique</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="contentTopic">Sujet principal</label>
+                        <input type="text" id="contentTopic" placeholder="Ex: Gestion des finances" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="contentKeywords">Mots-clés (séparés par des virgules)</label>
+                        <input type="text" id="contentKeywords" placeholder="Ex: finance, économie, budget">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="contentLength">Longueur</label>
+                        <select id="contentLength">
+                            <option value="short">Court (150-300 mots)</option>
+                            <option value="medium">Moyen (300-600 mots)</option>
+                            <option value="long">Long (600+ mots)</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn">Générer</button>
+                </form>
+                
+                <div class="output-box" id="contentOutput">
+                    <h3>Contenu généré:</h3>
+                    <div id="generatedContent"></div>
+                    
+                    <div class="action-buttons">
+                        <button id="copyContent" class="btn" style="background-color: var(--accent);">
+                            <i class="fas fa-copy"></i> Copier
+                        </button>
+                        <button id="downloadContent" class="btn" style="background-color: var(--success);">
+                            <i class="fas fa-download"></i> Télécharger
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page d'articles -->
+        <div class="page" id="articles">
+            <h2 class="section-title">Nos articles</h2>
+            <p>Découvrez nos derniers articles sur la finance, l'IA et la productivité.</p>
+            
+            <div class="articles-list" id="articlesContainer">
+                <!-- Les articles seront chargés dynamiquement -->
+            </div>
+            
+            <div class="pagination" id="pagination">
+                <!-- La pagination sera générée dynamiquement -->
+            </div>
+        </div>
+
+        <!-- Page À propos -->
+        <div class="page" id="about">
+            <div class="about-section">
+                <h2 class="section-title">À propos de nous</h2>
+                
+                <div class="about-card">
+                    <h3 class="about-title"><i class="fas fa-rocket"></i> Notre mission</h3>
+                    <p>Finance Digitale a été créé avec pour objectif de démocratiser l'accès aux outils financiers intelligents. Nous croyons que la technologie devrait être accessible à tous pour améliorer la gestion des finances personnelles et professionnelles.</p>
+                </div>
+                
+                <div class="about-card">
+                    <h3 class="about-title"><i class="fas fa-eye"></i> Notre vision</h3>
+                    <p>Nous aspirons à devenir la référence en matière d'outils financiers numériques en Afrique francophone, en combinant simplicité d'utilisation et puissance technologique.</p>
+                </div>
+                
+                <div class="about-card">
+                    <h3 class="about-title"><i class="fas fa-users"></i> Notre équipe</h3>
+                    <p>Une équipe passionnée d'experts en finance, technologie et design travaille sans relâche pour vous offrir les meilleurs outils et contenus.</p>
+                </div>
+                
+                <h2 class="section-title">Nos valeurs</h2>
+                <div class="values">
+                    <div class="value-item card">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Innovation</h3>
+                        <p>Nous repoussons constamment les limites pour créer des solutions uniques.</p>
+                    </div>
+                    
+                    <div class="value-item card">
+                        <div class="value-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>Accessibilité</h3>
+                        <p>Nos outils sont conçus pour être utilisés par tous, sans compétences techniques.</p>
+                    </div>
+                    
+                    <div class="value-item card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Sécurité</h3>
+                        <p>La protection de vos données est notre priorité absolue.</p>
+                    </div>
+                    
+                    <div class="value-item card">
+                        <div class="value-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Qualité</h3>
+                        <p>Nous nous engageons à fournir des outils et contenus de haute qualité.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page de contact -->
+        <div class="page" id="contact">
+            <div class="contact-form">
+                <h2 class="section-title">Contactez-nous</h2>
+                
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Votre nom</label>
+                        <input type="text" id="name" class="form-control" placeholder="Entrez votre nom" required>
+                        <div class="error-message" id="nameError">Veuillez entrer votre nom</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Votre email</label>
+                        <input type="email" id="email" class="form-control" placeholder="Entrez votre email" required>
+                        <div class="error-message" id="emailError">Veuillez entrer un email valide</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" class="form-control" placeholder="Objet de votre message" required>
+                        <div class="error-message" id="subjectError">Veuillez entrer un sujet</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Votre message</label>
+                        <textarea id="message" class="form-control" placeholder="Entrez votre message" required rows="5"></textarea>
+                        <div class="error-message" id="messageError">Veuillez entrer votre message</div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Envoyer le message</button>
+                </form>
+                
+                <div class="success-message" id="successMessage">
+                    <i class="fas fa-check-circle"></i> Votre message a été envoyé avec succès!
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p>Ou contactez-nous directement via WhatsApp:</p>
+                    <a href="https://wa.me/221768022188" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> +221 76 802 21 88
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Finance Digitale</span>
+                </div>
+                <p>Des outils intelligents pour une gestion financière optimale.</p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="#" data-page="home">Accueil</a></li>
+                    <li><a href="#" data-page="tools">Outils</a></li>
+                    <li><a href="#" data-page="articles">Articles</a></li>
+                    <li><a href="#" data-page="about">À propos</a></li>
+                    <li><a href="#" data-page="contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Outils</h3>
+                <ul>
+                    <li><a href="#" data-page="savings-calculator">Calculateur d'économies</a></li>
+                    <li><a href="#" data-page="currency-converter">Convertisseur de devises</a></li>
+                    <li><a href="#" data-page="content-generator">Générateur de contenu</a></li>
+                    <li><a href="#" data-page="pdf-creator">Créateur de PDF</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Légal</h3>
+                <ul>
+                    <li><a href="#">Conditions d'utilisation</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                    <li><a href="#">Mentions légales</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 Finance Digitale. Tous droits réservés.
+        </div>
+    </footer>
+
+    <script>
+        // Initialisation du fond 3D
+        function init3DBackground() {
+            const bg3d = document.getElementById('bg3d');
+            const particleCount = window.innerWidth < 768 ? 15 : 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle-3d';
+                
+                // Taille aléatoire
+                const size = Math.random() * 20 + 10;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Position aléatoire
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Animation aléatoire
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                particle.style.animation = `float3d ${duration}s linear ${delay}s infinite`;
+                
+                bg3d.appendChild(particle);
+            }
+        }
+
+        // Gestion du thème sombre/clair
+        function setupThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            
+            // Vérifier le thème préféré
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            
+            // Basculer entre les thèmes
+            themeToggle.addEventListener('click', () => {
+                if (body.getAttribute('data-theme') === 'dark') {
+                    body.removeAttribute('data-theme');
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        }
+
+        // Navigation entre les pages
+        function setupNavigation() {
+            const navLinks = document.querySelectorAll('[data-page]');
+            
+            function showPage(pageId) {
+                // Masquer toutes les pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Afficher la page sélectionnée
+                const page = document.getElementById(pageId);
+                if (page) {
+                    page.classList.add('active');
+                    
+                    // Mettre à jour le titre de la page
+                    document.title = `Finance Digitale | ${getPageTitle(pageId)}`;
+                    
+                    // Faire défiler vers le haut
+                    window.scrollTo(0, 0);
+                    
+                    // Charger les données si nécessaire
+                    if (pageId === 'articles') {
+                        loadArticles();
+                    }
+                }
+            }
+            
+            function getPageTitle(pageId) {
+                const titles = {
+                    'home': 'Accueil',
+                    'tools': 'Outils',
+                    'articles': 'Articles',
+                    'about': 'À propos',
+                    'contact': 'Contact',
+                    'savings-calculator': 'Calculateur d\'économies',
+                    'currency-converter': 'Convertisseur de devises',
+                    'content-generator': 'Générateur de contenu'
+                };
+                return titles[pageId] || 'Finance Digitale';
+            }
+            
+            // Gérer les clics sur les liens
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('data-page');
+                    showPage(pageId);
+                    
+                    // Mettre à jour l'URL
+                    history.pushState(null, null, `#${pageId}`);
+                });
+            });
+            
+            // Gérer le chargement initial
+            window.addEventListener('load', () => {
+                const hash = window.location.hash.substring(1);
+                if (hash && document.getElementById(hash)) {
+                    showPage(hash);
+                } else {
+                    showPage('home');
+                }
+            });
+            
+            // Gérer les changements d'URL
+            window.addEventListener('popstate', () => {
+                const hash = window.location.hash.substring(1);
+                if (hash && document.getElementById(hash)) {
+                    showPage(hash);
+                } else {
+                    showPage('home');
+                }
+            });
+        }
+
+        // Calculateur d'économies
+        function setupSavingsCalculator() {
+            const form = document.getElementById('savingsCalculator');
+            const resultBox = document.getElementById('savingsResult');
+            
+            if (!form) return;
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Récupérer les valeurs
+                const initialAmount = parseFloat(document.getElementById('initialAmount').value) || 0;
+                const monthlyDeposit = parseFloat(document.getElementById('monthlyDeposit').value) || 0;
+                const interestRate = parseFloat(document.getElementById('interestRate').value) || 0;
+                const years = parseFloat(document.getElementById('years').value) || 0;
+                
+                // Conversion des devises
+                const initialCurrency = document.getElementById('initialCurrency').value;
+                const depositCurrency = document.getElementById('depositCurrency').value;
+                
+                // Taux de change fixes (dans une vraie app, utiliser une API)
+                const exchangeRates = {
+                    'FCFA': { 'EUR': 0.0015, 'USD': 0.0017 },
+                    'EUR': { 'FCFA': 655.957, 'USD': 1.13 },
+                    'USD': { 'FCFA': 582.5, 'EUR': 0.88 }
+                };
+                
+                // Convertir tout en FCFA pour le calcul
+                let initialInFCFA = initialAmount;
+                if (initialCurrency !== 'FCFA') {
+                    initialInFCFA = initialAmount * exchangeRates[initialCurrency]['FCFA'];
+                }
+                
+                let monthlyInFCFA = monthlyDeposit;
+                if (depositCurrency !== 'FCFA') {
+                    monthlyInFCFA = monthlyDeposit * exchangeRates[depositCurrency]['FCFA'];
+                }
+                
+                // Calcul des intérêts composés
+                const monthlyRate = interestRate / 100 / 12;
+                const months = years * 12;
+                
+                let total = initialInFCFA;
+                for (let i = 0; i < months; i++) {
+                    total = total * (1 + monthlyRate) + monthlyInFCFA;
+                }
+                
+                const interest = total - (initialInFCFA + monthlyInFCFA * months);
+                
+                // Afficher le résultat
+                document.getElementById('totalAmount').textContent = formatCurrency(total, 'FCFA');
+                document.getElementById('interestAmount').textContent = formatCurrency(interest, 'FCFA');
+                resultBox.style.display = 'block';
+                
+                // Animation
+                resultBox.style.animation = 'none';
+                setTimeout(() => {
+                    resultBox.style.animation = 'fadeIn 0.5s';
+                }, 10);
+            });
+        }
+
+        // Convertisseur de devises
+        function setupCurrencyConverter() {
+            const form = document.getElementById('currencyConverter');
+            const resultBox = document.getElementById('conversionResult');
+            
+            if (!form) return;
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Récupérer les valeurs
+                const amount = parseFloat(document.getElementById('amount').value) || 0;
+                const fromCurrency = document.getElementById('fromCurrency').value;
+                const toCurrency = document.getElementById('toCurrency').value;
+                
+                // Taux de change fixes (dans une vraie app, utiliser une API)
+                const exchangeRates = {
+                    'FCFA': { 'EUR': 0.0015, 'USD': 0.0017, 'GBP': 0.0013 },
+                    'EUR': { 'FCFA': 655.957, 'USD': 1.13, 'GBP': 0.86 },
+                    'USD': { 'FCFA': 582.5, 'EUR': 0.88, 'GBP': 0.76 },
+                    'GBP': { 'FCFA': 769.23, 'EUR': 1.16, 'USD': 1.31 }
+                };
+                
+                // Conversion
+                let convertedAmount;
+                if (fromCurrency === toCurrency) {
+                    convertedAmount = amount;
+                } else {
+                    convertedAmount = amount * exchangeRates[fromCurrency][toCurrency];
+                }
+                
+                // Afficher le résultat
+                document.getElementById('convertedValue').textContent = formatCurrency(convertedAmount, toCurrency);
+                document.getElementById('fromCurrencyText').textContent = fromCurrency;
+                document.getElementById('toCurrencyText').textContent = toCurrency;
+                document.getElementById('exchangeRate').textContent = exchangeRates[fromCurrency][toCurrency];
+                resultBox.style.display = 'block';
+                
+                // Animation
+                resultBox.style.animation = 'none';
+                setTimeout(() => {
+                    resultBox.style.animation = 'fadeIn 0.5s';
+                }, 10);
+            });
+        }
+
+        // Générateur de contenu
+        function setupContentGenerator() {
+            const form = document.getElementById('contentGenerator');
+            const outputBox = document.getElementById('contentOutput');
+            const generatedContent = document.getElementById('generatedContent');
+            
+            if (!form) return;
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Récupérer les valeurs
+                const contentType = document.getElementById('contentType').value;
+                const contentTopic = document.getElementById('contentTopic').value;
+                const contentTone = document.getElementById('contentTone').value;
+                const contentKeywords = document.getElementById('contentKeywords').value;
+                const contentLength = document.getElementById('contentLength').value;
+                
+                // Générer du contenu de démonstration
+                let content = '';
+                const keywords = contentKeywords.split(',').map(k => k.trim()).filter(k => k);
+                
+                if (contentType === 'article') {
+                    content = generateArticle(contentTopic, contentTone, keywords, contentLength);
+                } else if (contentType === 'post') {
+                    content = generateSocialPost(contentTopic, contentTone, keywords);
+                } else if (contentType === 'email') {
+                    content = generateEmail(contentTopic, contentTone, keywords, contentLength);
+                } else if (contentType === 'product') {
+                    content = generateProductDescription(contentTopic, contentTone, keywords, contentLength);
+                }
+                
+                // Afficher le résultat
+                generatedContent.innerHTML = content;
+                outputBox.style.display = 'block';
+                
+                // Animation
+                outputBox.style.animation = 'none';
+                setTimeout(() => {
+                    outputBox.style.animation = 'fadeIn 0.5s';
+                }, 10);
+            });
+            
+            // Bouton Copier
+            document.getElementById('copyContent').addEventListener('click', () => {
+                const content = document.getElementById('generatedContent').textContent;
+                navigator.clipboard.writeText(content);
+                
+                const btn = document.getElementById('copyContent');
+                btn.innerHTML = '<i class="fas fa-check"></i> Copié!';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-copy"></i> Copier';
+                }, 2000);
+            });
+            
+            // Bouton Télécharger
+            document.getElementById('downloadContent').addEventListener('click', () => {
+                const content = document.getElementById('generatedContent').textContent;
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'contenu-genere.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        }
+
+        // Fonctions pour générer du contenu
+        function generateArticle(topic, tone, keywords, length) {
+            let wordCount;
+            if (length === 'short') wordCount = 200;
+            else if (length === 'medium') wordCount = 450;
+            else wordCount = 800;
+            
+            const tones = {
+                'professional': 'un ton professionnel',
+                'friendly': 'un ton amical et accessible',
+                'persuasive': 'un ton persuasif',
+                'technical': 'un ton technique'
+            };
+            
+            let content = `<h2>${topic}</h2>`;
+            content += `<p>Cet article a été généré avec ${tones[tone]}. Il explore en détail le sujet "${topic}" en ${wordCount} mots environ.</p>`;
+            
+            if (keywords.length > 0) {
+                content += `<p>Les mots-clés suivants sont intégrés naturellement dans le contenu : ${keywords.join(', ')}.</p>`;
+            }
+            
+            content += `<h3>Introduction</h3>`;
+            content += `<p>Dans cet article, nous allons examiner les différentes facettes de ${topic}. Ce sujet est particulièrement important car...</p>`;
+            
+            content += `<h3>Développement</h3>`;
+            content += `<p>La première chose à considérer est... Ensuite, il est important de noter que... Des études récentes ont montré que...</p>`;
+            
+            if (keywords.length > 0) {
+                content += `<p>En ce qui concerne ${keywords[0]}, il est essentiel de... ${keywords.length > 1 ? `De même, ${keywords[1]} joue un rôle crucial...` : ''}</p>`;
+            }
+            
+            content += `<h3>Conclusion</h3>`;
+            content += `<p>En résumé, ${topic} est un sujet complexe mais fascinant. En appliquant ces principes, vous pourrez...</p>`;
+            
+            return content;
+        }
+
+        function generateSocialPost(topic, tone, keywords) {
+            const openings = [
+                `Découvrez notre nouveau contenu sur ${topic}!`,
+                `${topic} - tout ce que vous devez savoir!`,
+                `Saviez-vous que ${topic} peut changer votre façon de voir les choses?`,
+                `Notre dernier article traite de ${topic}. Voici les points clés:`
+            ];
+            
+            let post = openings[Math.floor(Math.random() * openings.length)] + '\n\n';
+            
+            if (keywords.length > 0) {
+                post += `Points clés:\n`;
+                keywords.forEach((kw, i) => {
+                    post += `✓ ${kw}: explication concise...\n`;
+                });
+            }
+            
+            post += `\nLire l'article complet sur notre blog!`;
+            
+            if (keywords.length > 0) {
+                post += `\n\n#${keywords.join(' #')}`;
+            }
+            
+            return `<pre>${post}</pre>`;
+        }
+
+        function generateEmail(topic, tone, keywords, length) {
+            let wordCount;
+            if (length === 'short') wordCount = 150;
+            else if (length === 'medium') wordCount = 300;
+            else wordCount = 500;
+            
+            let email = `<p><strong>Objet:</strong> Tout ce que vous devez savoir sur ${topic}</p>`;
+            email += `<p>Bonjour [Nom],</p>`;
+            email += `<p>Nous sommes ravis de partager avec vous nos dernières réflexions sur ${topic}.</p>`;
+            
+            email += `<p>${topic} est un sujet important car... En tant qu'expert dans ce domaine, voici ce que nous recommandons:</p>`;
+            
+            if (keywords.length > 0) {
+                email += `<ul>`;
+                keywords.forEach(kw => {
+                    email += `<li><strong>${kw}:</strong> explication détaillée...</li>`;
+                });
+                email += `</ul>`;
+            }
+            
+            email += `<p>Pour en savoir plus, consultez notre blog ou contactez-nous directement.</p>`;
+            email += `<p>Cordialement,<br>L'équipe Finance Digitale</p>`;
+            
+            return email;
+        }
+
+        function generateProductDescription(topic, tone, keywords, length) {
+            let wordCount;
+            if (length === 'short') wordCount = 100;
+            else if (length === 'medium') wordCount = 200;
+            else wordCount = 350;
+            
+            let description = `<h2>${topic}</h2>`;
+            description += `<p>Découvrez notre produit exceptionnel: ${topic}. Conçu pour répondre à vos besoins les plus exigeants, ce produit combine performance et facilité d'utilisation.</p>`;
+            
+            if (keywords.length > 0) {
+                description += `<h3>Caractéristiques principales:</h3>`;
+                description += `<ul>`;
+                keywords.forEach(kw => {
+                    description += `<li><strong>${kw}:</strong> description détaillée de cette fonctionnalité...</li>`;
+                });
+                description += `</ul>`;
+            }
+            
+            description += `<h3>Avantages:</h3>`;
+            description += `<p>En choisissant ${topic}, vous bénéficiez de:</p>`;
+            description += `<ul>`;
+            description += `<li>Avantage 1 lié au produit...</li>`;
+            description += `<li>Avantage 2 avec impact mesurable...</li>`;
+            description += `<li>Avantage 3 différenciant...</li>`;
+            description += `</ul>`;
+            
+            description += `<p>Commandez dès maintenant et profitez de tous ces avantages!</p>`;
+            
+            return description;
+        }
+
+        // Gestion des articles
+        function loadArticles(page = 1) {
+            const articlesContainer = document.getElementById('articlesContainer');
+            const pagination = document.getElementById('pagination');
+            
+            if (!articlesContainer) return;
+            
+            // Simuler des articles (dans une vraie app, faire une requête AJAX)
+            const articlesPerPage = 6;
+            const totalArticles = 18;
+            const totalPages = Math.ceil(totalArticles / articlesPerPage);
+            
+            // Générer des articles
+            articlesContainer.innerHTML = '';
+            for (let i = (page - 1) * articlesPerPage; i < page * articlesPerPage && i < totalArticles; i++) {
+                const articleId = i + 1;
+                const date = new Date();
+                date.setDate(date.getDate() - Math.floor(Math.random() * 30));
+                
+                const article = document.createElement('div');
+                article.className = 'article-card card';
+                article.innerHTML = `
+                    <div class="article-image">
+                        <i class="fas fa-${getRandomArticleIcon()}"></i>
+                    </div>
+                    <div class="article-content">
+                        <div class="article-date">${formatDate(date)}</div>
+                        <h3 class="article-title">Article ${articleId}: ${getRandomArticleTopic()}</h3>
+                        <p class="article-excerpt">${getRandomArticleExcerpt()}</p>
+                        <a href="#" class="read-more">Lire plus <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                articlesContainer.appendChild(article);
+            }
+            
+            // Générer la pagination
+            pagination.innerHTML = '';
+            
+            if (page > 1) {
+                const prevBtn = document.createElement('button');
+                prevBtn.className = 'page-btn';
+                prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+                prevBtn.addEventListener('click', () => loadArticles(page - 1));
+                pagination.appendChild(prevBtn);
+            }
+            
+            for (let i = 1; i <= totalPages; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = i === page ? 'page-btn active' : 'page-btn';
+                pageBtn.textContent = i;
+                pageBtn.addEventListener('click', () => loadArticles(i));
+                pagination.appendChild(pageBtn);
+            }
+            
+            if (page < totalPages) {
+                const nextBtn = document.createElement('button');
+                nextBtn.className = 'page-btn';
+                nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+                nextBtn.addEventListener('click', () => loadArticles(page + 1));
+                pagination.appendChild(nextBtn);
+            }
+        }
+
+        function getRandomArticleIcon() {
+            const icons = [
+                'chart-line', 'calculator', 'piggy-bank', 'lightbulb', 
+                'robot', 'mobile-alt', 'laptop-code', 'coins'
+            ];
+            return icons[Math.floor(Math.random() * icons.length)];
+        }
+
+        function getRandomArticleTopic() {
+            const topics = [
+                'Les secrets de l\'épargne intelligente',
+                'IA et finance: la révolution en marche',
+                'Optimiser son budget mensuel',
+                'Investir en temps de crise',
+                'Les tendances fintech 2023',
+                'Cryptomonnaies: comprendre les bases',
+                'Protéger ses données financières',
+                'Outils numériques pour entrepreneurs'
+            ];
+            return topics[Math.floor(Math.random() * topics.length)];
+        }
+
+        function getRandomArticleExcerpt() {
+            const excerpts = [
+                'Découvrez comment maximiser vos économies avec ces techniques éprouvées...',
+                'L\'intelligence artificielle transforme radicalement le secteur financier...',
+                'Gérer son budget n\'a jamais été aussi simple grâce à ces méthodes...',
+                'Dans un contexte économique incertain, certaines stratégies d\'investissement...',
+                'Les innovations technologiques redéfinissent les services financiers...',
+                'Les cryptomonnaies suscitent beaucoup d\'intérêt mais comment fonctionnent-elles...',
+                'La sécurité de vos données financières est primordiale, voici comment...',
+                'Les entrepreneurs disposent aujourd\'hui d\'outils puissants pour gérer...'
+            ];
+            return excerpts[Math.floor(Math.random() * excerpts.length)];
+        }
+
+        function formatDate(date) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('fr-FR', options);
+        }
+
+        // Formulaire de contact
+        function setupContactForm() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            if (!form) return;
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Réinitialiser les messages d'erreur
+                document.querySelectorAll('.error-message').forEach(el => {
+                    el.style.display = 'none';
+                });
+                
+                // Valider les champs
+                let isValid = true;
+                
+                const name = document.getElementById('name');
+                if (!name.value.trim()) {
+                    document.getElementById('nameError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const email = document.getElementById('email');
+                if (!email.value.trim() || !isValidEmail(email.value)) {
+                    document.getElementById('emailError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const subject = document.getElementById('subject');
+                if (!subject.value.trim()) {
+                    document.getElementById('subjectError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                const message = document.getElementById('message');
+                if (!message.value.trim()) {
+                    document.getElementById('messageError').style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Simuler l'envoi (dans une vraie app, envoyer à un serveur)
+                    setTimeout(() => {
+                        form.reset();
+                        successMessage.style.display = 'block';
+                        
+                        // Cacher le message après 5 secondes
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 5000);
+                    }, 1000);
+                }
+            });
+        }
+
+        function isValidEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Formatage des devises
+        function formatCurrency(amount, currency) {
+            if (currency === 'FCFA') {
+                return Math.round(amount).toLocaleString('fr-FR') + ' FCFA';
+            } else if (currency === 'EUR') {
+                return amount.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
+            } else if (currency === 'USD') {
+                return amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+            } else if (currency === 'GBP') {
+                return amount.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' });
+            }
+            return amount.toLocaleString();
+        }
+
+        // Menu mobile
+        function setupMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            if (!mobileMenuBtn) return;
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                document.body.classList.toggle('mobile-menu-open');
+            });
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    document.body.classList.remove('mobile-menu-open');
+                });
+            });
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            init3DBackground();
+            setupThemeToggle();
+            setupNavigation();
+            setupSavingsCalculator();
+            setupCurrencyConverter();
+            setupContentGenerator();
+            setupContactForm();
+            setupMobileMenu();
+            
+            // Charger les articles si sur la page
+            if (document.getElementById('articlesContainer')) {
+                loadArticles();
+            }
+        });
+    </script>
+</body>
+</html>
